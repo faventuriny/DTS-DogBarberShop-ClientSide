@@ -24,9 +24,11 @@
                             [matDatepickerFilter]="dateFilter"
                             formControlName="dateInput"
                             (dateChange)="onPickDateSelected($event)"
+                            readonly
+                            [value]="minDate"
                           >
                           <mat-datepicker-toggle matSuffix [for]="myDatePicker"></mat-datepicker-toggle>
-                          <mat-datepicker #myDatePicker></mat-datepicker>
+                          <mat-datepicker #myDatePicker [disabled]="false"></mat-datepicker>
                         </mat-form-field>
                         <select
                           name="selectTimeSlot"
@@ -60,9 +62,12 @@
                           [matDatepickerFilter]="dateFilter"
                           formControlName="dateInput"
                           (dateChange)="onPickDateSelected($event)"
+                          readonly
+                          [value]="existingTimeDate"
+
                         >
                         <mat-datepicker-toggle matSuffix [for]="myDatePicker"></mat-datepicker-toggle>
-                        <mat-datepicker #myDatePicker></mat-datepicker>
+                        <mat-datepicker #myDatePicker [disabled]="false"></mat-datepicker>
                       </mat-form-field>
                       <select
                         name="selectTimeSlot"

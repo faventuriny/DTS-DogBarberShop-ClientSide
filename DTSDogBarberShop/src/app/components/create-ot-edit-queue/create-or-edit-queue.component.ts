@@ -33,6 +33,8 @@ export class CreateOrEditQueueComponent implements OnInit {
   // date picker
   minDate = new Date()
   dateFilter = (date: any)  => {
+    if(date === null)
+      return false
     const day = date.getDay();
     return day !== 5 && day !== 6;
   }
@@ -58,9 +60,9 @@ export class CreateOrEditQueueComponent implements OnInit {
   }
 
   createFormForNewAppointment(){
-    this.form = this.fb.group({
+      this.form = this.fb.group({
       userName : new FormControl(this.userName),
-      dateInput : new FormControl('', Validators.required),
+      dateInput : new FormControl(this.minDate, Validators.required),
       selectTimeSlot: new FormControl('',Validators.required),
       registTime : new FormControl(''),
       userID : new FormControl(this.userId),
@@ -69,9 +71,9 @@ export class CreateOrEditQueueComponent implements OnInit {
   createFormForEditing(){
       this.form = this.fb.group({
         userName : new FormControl(this.queue?.userName),
-        dateInput : new FormControl('', Validators.required),
+        dateInput : new FormControl(this.queue.queueTime, Validators.required),
         selectTimeSlot: new FormControl('',Validators.required),
-        registTime : new FormControl(this.queue?.registTime),
+        registTime : new FormControl(this.queue.registTime),
         userID : new FormControl(this.queue.userId),
         id : new FormControl(this.queue.id)
       })
