@@ -20,7 +20,7 @@ z-index: 50;
 position: absolute;
 width: 100vw;
 height: 100vh;
-top: 70px;
+top: 110px;
 background: rgba(0, 0, 0, 0.5);
 }
 .inner {
@@ -108,9 +108,9 @@ text-decoration: none;
 color: blue;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
 .general {
-  top: 100px;
+  top: 140px;
 }
 }
 
