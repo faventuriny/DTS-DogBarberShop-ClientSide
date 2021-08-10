@@ -1,0 +1,96 @@
+<app-alert
+    *ngIf="displayAlertWindow"
+    (closeAlert)="onClickCloseAlert($event)"
+></app-alert>
+<div>
+    <div class="container" (click)="onClickCloseWindow()">
+        <div class="box">
+            <div class="form">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()" (click)="onEvent($event)">
+                  <!-- New Appointment -->
+                  <div *ngIf="this.queue === undefined">
+                    <div class="row title">
+                        <label>Hi</label>
+                        <div>{{this.userName}},</div>
+                    </div>
+                    <div class="row">Do you want to ceate new appointment?</div>
+                    <div class="error" *ngIf="showErrorMsg">Oppssie! {{erorMsg}}</div>
+                    <div class="row">
+                        <mat-form-field>
+                          <input
+                            matInput
+                            [matDatepicker]="myDatePicker"
+                            [min]="minDate"
+                            [matDatepickerFilter]="dateFilter"
+                            formControlName="dateInput"
+                            (dateChange)="onPickDateSelected($event)"
+                          >
+                          <mat-datepicker-toggle matSuffix [for]="myDatePicker"></mat-datepicker-toggle>
+                          <mat-datepicker #myDatePicker></mat-datepicker>
+                        </mat-form-field>
+                        <select
+                          name="selectTimeSlot"
+                          class="select-time-slot"
+                          formControlName="selectTimeSlot"
+                          *ngIf="showHoursSlot"
+                        >
+                          <option value="" disabled selected>--Please choose an hour--</option>
+                          <option *ngFor="let hour of timeSlot" [ngValue]="hour">{{hour}}</option>
+                        </select>
+                    </div>
+                    <div class="buttons">
+                        <button class="save" type="submit" *ngIf="!form.invalid">Save</button>
+                    </div>
+                  </div>
+
+                  <!-- Edit Appointment -->
+                  <div *ngIf="this.queue !== undefined">
+                    <div class="row title">
+                      <label>Hi</label>
+                      <div>{{this.userName}},</div>
+                    </div>
+                    <div class="row">You have an appointment set to <strong>{{existingTimeDate | date: 'MMM d, h:mm a'}}</strong></div>
+                    <div class="row">Do you want to change your appointment?</div>
+                    <div class="row">
+                      <mat-form-field>
+                        <input
+                          matInput
+                          [matDatepicker]="myDatePicker"
+                          [min]="minDate"
+                          [matDatepickerFilter]="dateFilter"
+                          formControlName="dateInput"
+                          (dateChange)="onPickDateSelected($event)"
+                        >
+                        <mat-datepicker-toggle matSuffix [for]="myDatePicker"></mat-datepicker-toggle>
+                        <mat-datepicker #myDatePicker></mat-datepicker>
+                      </mat-form-field>
+                      <select
+                        name="selectTimeSlot"
+                        class="select-time-slot"
+                        formControlName="selectTimeSlot"
+                        *ngIf="showHoursSlot"
+                      >
+                        <option value="" disabled selected>--Please choose an hour--</option>
+                        <option *ngFor="let hour of timeSlot" [ngValue]="hour">{{hour}}</option>
+                      </select>
+                    </div>
+                    <div class="row">
+                        <label>Registered at</label>
+                        <div>{{registTime | date: 'MMM d, h:mm a'}}</div>
+                    </div>
+                    <div>
+                        <input
+                        type="hidden"
+                        value={{this.queue.id}}
+                        formControlName="id">
+                    </div>
+                    <div class="buttons">
+                        <button class="save" type="submit" *ngIf="!form.invalid">Save</button>
+                        <button class="delete" type="button" (click)="onDelete()">Delete</button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

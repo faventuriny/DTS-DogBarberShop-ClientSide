@@ -1,0 +1,117 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.backgrount-img{
+z-index: 0;
+width: 100vw;
+height: 100vh;
+object-fit: cover;
+}
+.backgrount-img img {
+width: 100%;
+height: 100%;
+
+}
+.general {
+display: flex;
+justify-content: center;
+align-items: flex-start;
+z-index: 50;
+position: absolute;
+width: 100vw;
+height: 100vh;
+top: 70px;
+background: rgba(0, 0, 0, 0.5);
+}
+.inner {
+/* width: 300px; */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: center;
+margin-top: 50px;
+border: 2px solid #006D77;
+border-radius: 5px;
+}
+.title {
+background: #006D77;
+padding: 10px 0;
+width: 100%;
+text-align: center;
+color: white;
+font-weight: 700;
+font-size: 1.5rem;
+}
+.errorMsg {
+padding: 30px 30px 0 30px;
+display: flex;
+flex-direction: column;
+align-items: center;
+color: red;
+}
+.form {
+padding: 15px;
+background: white;
+}
+.form form {
+padding: 30px;
+}
+.input,
+.invalid-input {
+border: none;
+border-bottom: 1px solid grey;
+font-size: 1rem;
+width: 100%;
+padding: 0.5rem;
+margin-bottom: 0.5rem;
+}
+.span {
+margin-bottom: 1rem;
+color: red;
+}
+.input:focus,
+.invalid-input {
+outline: none;
+}
+.invalid-input{
+border: 2px solid #E29578;
+border-radius: 5px;
+}
+
+.button {
+margin-top: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.button button {
+border-radius: 5px;
+border: none;
+padding: 5px 10px;
+background: #E29578;
+color: #EDF6F9;
+margin-right: 10px;
+font-size: 1.2rem;
+cursor: pointer;
+font-weight: 700;
+}
+.button button:hover {
+background: #457B9D;
+
+}
+.button button:disabled {
+cursor: not-allowed;
+background: #F1CABC;
+}
+.button a {
+text-decoration: none;
+color: blue;
+}
+
+@media (min-width: 992px) {
+.general {
+  top: 100px;
+}
+}
+
+

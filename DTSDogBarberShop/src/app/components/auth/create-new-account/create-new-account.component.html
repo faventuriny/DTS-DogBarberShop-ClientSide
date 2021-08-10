@@ -1,0 +1,63 @@
+<div class="backgrount-img">
+  <img src="assets/imgs/dogs.jpg" alt="bulldog">
+</div>
+<div class="general">
+    <div class="inner">
+      <div class="title">Create a New Account</div>
+      <div class="form">
+        <div class="errorMsg" *ngIf="isShowErrorMsg">
+          <span>Oppsssie.. Some Thing want wrong:</span>
+          <span>{{errorMsg}}</span>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+          <div>
+            <input
+              formControlName="name"
+              type="text"
+              placeholder="Name"
+              [ngClass]="!name.valid && name.touched ? 'invalid-input' : 'input'"
+            />
+            <span *ngIf="!name.valid && name.touched" class="span">You must enter your name</span>
+          </div>
+          <div>
+            <input
+              formControlName="email"
+              type="text"
+              placeholder="Email"
+              [ngClass]="!email.valid && email.touched ? 'invalid-input' : 'input'"
+            />
+            <span *ngIf="!email.valid && email.touched" class="span">You must enter a mail</span>
+          </div>
+          <div>
+            <input
+              formControlName="password"
+              type="password"
+              placeholder="Password"
+              [ngClass]="!password.valid && password.touched ? 'invalid-input' : 'input'"
+            />
+            <span *ngIf="!password.valid && password.touched" class="span">A valid password contain 8 charts with: one capital letter, one digit and one non-alphanumeric char</span>
+          </div>
+          <div>
+            <input
+              formControlName="passwordConfirm"
+              type="password"
+              placeholder="Password Confirm"
+              [ngClass]="!passwordConfirm.valid && passwordConfirm.touched ? 'invalid-input' : 'input'"
+            />
+            <span *ngIf="!passwordConfirm.valid && passwordConfirm.touched" class="span">You confirmation password isn't right</span>
+          </div>
+          <div class="button">
+            <div>
+              <button type="submit" [disabled]="!form.valid">
+                Create New Account
+              </button>
+            </div>
+            <div>
+              <a routerLink="/login">Login</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+

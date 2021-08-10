@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="logo">
+      <span>Dogs Barber Shop</span>
+  </div>
+  <div class="name-and-logout" *ngIf="this.showName">
+    <div  class="name-and-logout-inner">
+        <label>Hi <strong>{{this.userName}}</strong></label>
+        <button (click)="onClickLogout()">Logout</button>
+    </div>
+  </div>
+</div>
+

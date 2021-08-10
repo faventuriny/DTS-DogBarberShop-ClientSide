@@ -1,0 +1,33 @@
+<app-user-edit-mode
+    *ngIf="displayEditWindow"
+    (closeWindow)="onClickCloseWindow($event)"
+    [queue] = "selectedQueue"
+></app-user-edit-mode>
+<div class="background-img-mobile">
+    <img src="assets/imgs/waitingMobile.jpg" alt="dog">
+</div>
+<div class="background-img">
+  <img src="assets/imgs/sleeping-dog.jpg" alt="dog">
+</div>
+<div class="container">
+  <div class="inner" *ngIf="isDataFromServerOk">
+    <div class="row title">
+      <div class="first-row" (click)="onClickSortByName()">Name <small>&#8595;</small></div>
+      <div (click)="onClickSortByTime()">Appointment Time <small>&#8595;</small></div>
+    </div>
+    <div *ngFor="let queue of queueList; let i  = index"  (click)="onClickOpenUserEditeMode(i, queue.userId)">
+      <div class="row" [ngClass]="{'userClass': queue.userId === this.userId}">
+        <div class="first-row">{{queue.userName}}</div>
+        <div>{{queue.queueTime | date: 'MMM d, h:mm a' }}</div>
+      </div>
+    </div>
+    <div>
+      <button (click)="onClickOpenNewAppointment()">Add New Appointment</button>
+    </div>
+  </div>
+  <div class="inner" *ngIf="!isDataFromServerOk">
+    <span>Oppppsssiee... {{this.serverMsg}}</span>
+  </div>
+</div>
+
+

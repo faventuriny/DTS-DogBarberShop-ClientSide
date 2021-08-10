@@ -1,0 +1,14 @@
+<div>
+  <div class="container" (click)="onClickCloseWindow()">
+      <div class="box" (click)="onEvent($event)">
+          <div class="form">
+                  <div class="row">Are you sure you want to delete your apointment?</div>
+                  <div class="buttons">
+                      <button class="save" type="button" (click)="onDelete()">Yes</button>
+                      <button class="delete" type="button" (click)="onClickCloseWindow()">No</button>
+                  </div>
+          </div>
+      </div>
+  </div>
+</div>
+
