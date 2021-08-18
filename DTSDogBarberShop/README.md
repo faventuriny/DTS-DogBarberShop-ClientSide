@@ -1,6 +1,6 @@
 # DTSDogBarberShop
 
-## The firest time you download the project run the following command:
+## The first time you download the project run the following command:
 Run `npm i` for installing all the packages
 
 ## Development server
